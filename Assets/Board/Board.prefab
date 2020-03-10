@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2440321858405198267}
   m_Layer: 0
   m_Name: Side (4)
-  m_TagString: Untagged
+  m_TagString: OutOfBounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a5e88237450896a41ab27288fde805c9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -121,11 +121,13 @@ GameObject:
   - component: {fileID: 2440321859442599184}
   - component: {fileID: 2440321859442599187}
   - component: {fileID: 2440321859442599191}
-  - component: {fileID: 114186656937901394}
+  - component: {fileID: 114405414283374544}
+  - component: {fileID: 8679323811704700629}
+  - component: {fileID: 114387934505918982}
   - component: {fileID: 114161543424292104}
   m_Layer: 0
   m_Name: Board
-  m_TagString: Untagged
+  m_TagString: OutOfBounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,7 +175,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a5e88237450896a41ab27288fde805c9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -222,7 +224,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &114186656937901394
+--- !u!114 &114405414283374544
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -231,11 +233,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 2440321859442599186}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a2efd98c538d045b81b5d1e979de83, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f826f2f3ce551745b35aba67abfcb84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 5334116599321884727, guid: e6625d3af0eed3944b38d89f45b686f2, type: 3}
-  mapCoords: a1
+  highLightToken: {fileID: 8297767540205699560, guid: f11152a50be8be443b104a6188f4ca8c,
+    type: 3}
+--- !u!114 &8679323811704700629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2440321859442599186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42da719cabe0af14cb22a35925f8da83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preFab: {fileID: 6702266795179406147, guid: 1b1b9bb0465a0524f86a7526be63f722, type: 3}
+  pieceType: knight
+  mapCoords: c3,c4
+  gridHeight: 2
+--- !u!114 &114387934505918982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2440321859442599186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42da719cabe0af14cb22a35925f8da83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preFab: {fileID: 4112042914729179218, guid: c4dd8106bd469a3488af5f5217cb053d, type: 3}
+  pieceType: pawn
+  mapCoords: a1,b2
   gridHeight: 2
 --- !u!114 &114161543424292104
 MonoBehaviour:
@@ -249,8 +282,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42a2efd98c538d045b81b5d1e979de83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tile: {fileID: 2256982388423240345, guid: c2cf4e2fa3a76ee46bad38cb43014e96, type: 3}
-  mapCoords: a1,a2,a3,a4,a5,a6,a6,a8
+  darkTile: {fileID: 6509393109710753329, guid: 4eff9e38f7d2ca240ae6db8100df12f4,
+    type: 3}
+  lightTile: {fileID: 1476742931991754458, guid: a08a8adfc9f93be478b462c6380493fc,
+    type: 3}
+  mapCoords: a1,a2,a3,a4,a5,a6,a6,a8,b1,b2,b3,b4,b5,b6,c1,c2,c3,c4,c5,d1,d2,d3,e1,f1,g2,h2,h8,f8,g8
   gridHeight: 1.25
 --- !u!1 &2440321859557333392
 GameObject:
@@ -267,7 +303,7 @@ GameObject:
   - component: {fileID: 2440321859557333397}
   m_Layer: 0
   m_Name: Side (2)
-  m_TagString: Untagged
+  m_TagString: OutOfBounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,7 +347,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a5e88237450896a41ab27288fde805c9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -375,7 +411,7 @@ GameObject:
   - component: {fileID: 2440321860051135428}
   m_Layer: 0
   m_Name: Side (1)
-  m_TagString: Untagged
+  m_TagString: OutOfBounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -419,7 +455,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a5e88237450896a41ab27288fde805c9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -483,7 +519,7 @@ GameObject:
   - component: {fileID: 2440321860204978109}
   m_Layer: 0
   m_Name: Side (3)
-  m_TagString: Untagged
+  m_TagString: OutOfBounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -527,7 +563,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a5e88237450896a41ab27288fde805c9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

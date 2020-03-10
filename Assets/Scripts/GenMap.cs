@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class GenMap : MonoBehaviour
 {
-    public GameObject tile;
+    public GameObject darkTile;
+    public GameObject lightTile;
     public string mapCoords;
     private float gridConstant = -3.5f;
     public float gridHeight = 1.25f;
@@ -20,7 +21,7 @@ public class GenMap : MonoBehaviour
                 // Check coord has 2 valid values and convert to Vector3
                 if (coord.Length == 2){
                     // Convert string coord into vector3 and then gerate it on the board
-                    Generate(convertCoordToArrayValues(coord));
+                    convertCoordToArrayValues(coord);
                 } else{
                     print ("sent incorrect length coords");
                 }
@@ -30,11 +31,11 @@ public class GenMap : MonoBehaviour
         }
     }
 
-    void Generate(Vector3 vector){
+    void Generate(GameObject tile, Vector3 vector){
         Instantiate (tile, vector, Quaternion.identity);
     }
 
-    Vector3 convertCoordToArrayValues(string coord){
+    void convertCoordToArrayValues(string coord){
         char[] brokenCoords = coord.ToCharArray();
         float xCoord = -gridConstant; // If no reuslt is found the vector will have values of 0 for x and z
         float zCoord = -gridConstant;
@@ -102,6 +103,11 @@ public class GenMap : MonoBehaviour
                 print("Not a valid char (1-8)");
                 break;
         }
-        return new Vector3 (xCoord+gridConstant, gridHeight, zCoord+gridConstant);
+        Vector3 vec3 = new Vector3 (xCoord+gridConstant, gridHeight, zCoord+gridConstant);
+        if((zCoord+xCoord)%2 == 0){
+            Generate(lightTile, vec3);
+        } else {
+            Generate(darkTile, vec3);
+        }
     }
 }
